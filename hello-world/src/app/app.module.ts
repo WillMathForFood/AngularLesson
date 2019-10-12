@@ -29,7 +29,9 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { GithubProfileComponent } from './github-profile/github-profile.component';
-import { NotFoundComponent } from './not-found/not-found.component'; 
+import { NotFoundComponent } from './not-found/not-found.component';
+import { BlogHomepageComponent } from './blog-homepage/blog-homepage.component';
+import { BlogArchiveComponent } from './blog-archive/blog-archive.component'; 
 
 @NgModule({
   declarations: [
@@ -54,6 +56,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
     HomeComponent,
     GithubProfileComponent,
     NotFoundComponent,
+    BlogHomepageComponent,
+    BlogArchiveComponent,
   ],
   imports: [
     BrowserModule,
@@ -61,8 +65,10 @@ import { NotFoundComponent } from './not-found/not-found.component';
     ReactiveFormsModule,
     HttpModule,
     RouterModule.forRoot([
+      { path: '', component: BlogHomepageComponent },
+      { path: 'archive/:year/:month', component: BlogArchiveComponent },
       { path: '', component: HomeComponent },
-      { path: 'followers/:username', component: GithubProfileComponent },
+      { path: 'followers/:userid/:username', component: GithubProfileComponent },
       { path: 'followers', component: GithubFollowersComponent },
       { path: 'posts', component: PostsComponent},
       { path: '**', component: NotFoundComponent }
